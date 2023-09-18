@@ -35,8 +35,8 @@ Using ethers.js, information is retrieved from the Ethereum contract. This infor
 ```
 
 ## 2:How to install
-1.Download and install Unity Editor 2021.3.19f1, then open the folder containing the Unity files.
-2.Select the WebGL platform.
-3.Build the project and package it into the "demo" directory.
-4.Copy the "index.html" file from the "docs" directory and replace the existing "index.html" file in the "demo" folder.
-5.Deploy the demo folder to the nginx server
+- Download and install Unity Editor 2021.3.19f1, then open the folder containing the Unity files.
+- Select the WebGL platform.
+- Build the project and package it into the "demo" directory.
+- Copy the "index.html" file from the "docs" directory and replace the existing "index.html" file in the "demo" folder.
+- Deploy the demo folder to the nginx server
