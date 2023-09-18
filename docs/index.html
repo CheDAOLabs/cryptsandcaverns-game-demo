@@ -507,6 +507,9 @@
         const layout = await dungeons.getLayout(id);
         const size = await dungeons.getSize(id);
         const entities = await dungeons.getEntities(id);
+        const tokenURI = await dungeons.tokenURI(id);
+
+        console.log("tokenURI",tokenURI)
 
         console.log("cc_name", name);
 
