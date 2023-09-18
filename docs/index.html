@@ -509,12 +509,28 @@
         const entities = await dungeons.getEntities(id);
         const tokenURI = await dungeons.tokenURI(id);
 
-        console.log("tokenURI",tokenURI)
+        console.log("tokenURI", tokenURI)
+
+        // 从data URI中提取base64编码的数据
+        const base64Data = tokenURI.split(',')[1];
+        const jsonData = atob(base64Data);
+        const parsedData = JSON.parse(jsonData);
+        console.log("parsedData", parsedData);
+
+        const nameAttribute = parsedData.attributes.find(attr => attr.trait_type === "affinity");
+        const affinity = nameAttribute ? nameAttribute.value: undefined;
+
+
+        console.log("affinity", affinity);
 
         console.log("cc_name", name);
 
         const myDiv = document.getElementById('unity-build-title');
-        myDiv.innerHTML = name;
+        if(affinity){
+            myDiv.innerHTML = name + " [Affinity:" + affinity +"]";
+        }else {
+            myDiv.innerHTML = name;
+        }
 
         // Parse Layout into binary
         layoutInt = BigInt(layout)              // Process uint256 -> javascript readable int
