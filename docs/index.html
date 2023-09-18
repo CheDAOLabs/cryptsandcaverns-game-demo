@@ -520,16 +520,20 @@
         const nameAttribute = parsedData.attributes.find(attr => attr.trait_type === "affinity");
         const affinity = nameAttribute ? nameAttribute.value: undefined;
 
+        const environmentAttribute = parsedData.attributes.find(attr => attr.trait_type === "environment");
+        const environment = environmentAttribute ? environmentAttribute.value: undefined;
 
         console.log("affinity", affinity);
-
         console.log("cc_name", name);
 
         const myDiv = document.getElementById('unity-build-title');
+        myDiv.innerHTML = name;
         if(affinity){
-            myDiv.innerHTML = name + " [Affinity:" + affinity +"]";
-        }else {
-            myDiv.innerHTML = name;
+            myDiv.innerHTML = myDiv.innerHTML + " [Affinity:" + affinity +"]";
+        }
+
+        if(environment){
+            myDiv.innerHTML = myDiv.innerHTML + " [Environment:" + environment +"]";
         }
 
         // Parse Layout into binary
