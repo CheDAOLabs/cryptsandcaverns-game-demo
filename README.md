@@ -1,8 +1,6 @@
 # cryptsandcaverns-game-demo
 
-## This is a demonstration project for C&C (crypts and caverns). 
-## Its purpose is to fetch detailed map information of NFTs from the blockchain within the C&C contract. 
-## Then, it utilizes the Unity engine to render the map into a game scene that can be explored and played in a realistic manner.
+## This is a demonstration project for C&C (crypts and caverns). Its purpose is to fetch detailed map information of NFTs from the blockchain within the C&C contract. Then, it utilizes the Unity engine to render the map into a game scene that can be explored and played in a realistic manner.
 
 ## 1: Implementation Principle
 Using ethers.js, information is retrieved from the Ethereum contract. This information is then decoded into a two-dimensional map data format. The data is stored in a global variable within the web page's window object. When the game loads the map, the map's two-dimensional array is obtained through a JavaScript library (jslib). Subsequently, the map is rendered on top of a tile map component.
