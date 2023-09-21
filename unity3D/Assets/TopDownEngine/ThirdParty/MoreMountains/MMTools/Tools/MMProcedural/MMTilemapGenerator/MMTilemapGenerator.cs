@@ -9,39 +9,6 @@ using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 using System.Runtime.InteropServices;
 
-[System.Serializable]
-public class ArrayData
-{
-    [SerializeField]
-    public string[] data;
-    public int size;
-
-    public int[,] GetData()
-    {
-        int[,] dataArray = new int[data.Length, data[0].Split(',').Length];
-
-        for (int i = 0; i < data.Length; i++)
-        {
-            string[] elements = data[i].Split(',');
-            for (int j = 0; j < elements.Length; j++)
-            {
-                int value;
-                if (int.TryParse(elements[j], out value))
-                {
-                    dataArray[i, j] = value;
-                }
-                else
-                {
-                    Debug.LogError("Failed to parse element at position [" + i + "," + j + "]");
-                }
-            }
-        }
-
-        return dataArray;
-    }
-  
-}
-
 namespace MoreMountains.Tools
 {
     /// <summary>
@@ -178,15 +145,6 @@ namespace MoreMountains.Tools
             int height = layer.OverrideGridSize
                  ? layer.GridHeight
                  : UnityEngine.Random.Range(GridHeight.x, GridHeight.y);
-
-            // #if UNITY_WEBGL && ! UNITY_EDITOR 
-                string grid_str = GetGrid();
-                Debug.LogError(grid_str);
-                ArrayData arrayData = JsonUtility.FromJson<ArrayData>(grid_str);
-                Debug.LogError(arrayData.data);
-                width = arrayData.size;
-                height = arrayData.size;
-            // #endif
             
             globalSeedFloat = UnityEngine.Random.value;
 
@@ -230,7 +188,6 @@ namespace MoreMountains.Tools
                     layer.Grid = _grid;
                     break;
                 case GenerateMethods.RandomWalkAvoider:
-
                     int[,] obstacleGrid =
                         MMGridGenerator.TilemapToGrid(layer.RandomWalkAvoiderObstaclesTilemap, width, height);
                     _grid = MMGridGeneratorRandomWalkAvoider.Generate(width, height, seed,
@@ -256,24 +213,6 @@ namespace MoreMountains.Tools
                     layer.TargetTilemap.ClearAllTiles();
                     DelayedCopy(layer);
                     break;
-            }
-
-            if (layer.Name == "Walls Random Walk")
-            {
-                // #if UNITY_WEBGL && ! UNITY_EDITOR 
-                _grid = MMGridGeneratorFull.Generate(width, height, false);
-                int[,] test2 = MMGridGeneratorFull.Generate(width, height, false);
-                int[,] data = arrayData.GetData();
-                for (int i = width - 1; i >= 0; i--)
-                {
-                    for (int j = 0; j < height; j++)
-                    {
-                        test2[i, j] = data[j, i];
-                    }
-                }
-                _grid = SaveArray(test2);
-                layer.Grid = _grid;
-                // #endif
             }
 
             if (layer.Smooth)
