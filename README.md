@@ -41,3 +41,13 @@ Using ethers.js, information is retrieved from the Ethereum contract. This infor
 - Build the project and package it into the "demo" directory.
 - Copy the "index.html" file from the "docs" directory and replace the existing "index.html" file in the "demo" folder.
 - Deploy the demo folder to the nginx server
+
+# 3.Code structure
+There are a total of 5 script files used in the Unity project, respectively.
+
+- 1.**ArrayData.cs** This is used to deserialize the detailed information of CC maps from JSON into CSharp Class.
+- 2.**CCLevelGenerator.cs** This is the CC map generator responsible for generating maps, teleportation points, players, tile maps, enemies, and coins on the map. 
+- 3.**CCTilemapGenerator.cs** This is the tile map generator responsible for generating tile information such as walls, grass, and other tiles.
+- 4.**ExitCollisionTrigger.cs** This is the trigger script for teleportation points. When the player touches the teleportation point, this script is responsible for taking the player to the next level.
+- 5.**cc.jslib** This is a plugin component that allows CSharp to invoke JavaScript functions in a web page.
+
