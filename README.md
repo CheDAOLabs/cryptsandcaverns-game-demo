@@ -51,10 +51,11 @@ There are a total of 5 script files used in the Unity project, respectively.
 - 4.**ExitCollisionTrigger.cs** This is the trigger script for teleportation points. When the player touches the teleportation point, this script is responsible for taking the player to the next level.
 - 5.**cc.jslib** This is a plugin component that allows CSharp to invoke JavaScript functions in a web page.
 
+---
 
-- [UnityClient](/unity) This is the source file folder of the Unity client project
-    - [Assets](/unity/Assets) This is the game assets folder.
-       - [Scripts](/unity/Assets/Scripts) This is the game script folder.
-           - [ArrayData.cs](root/subdirectory1/file1) This is used to deserialize the detailed information of CC maps from JSON into CSharp Class.
+- [UnityClient](/unity3D) This is the source file folder of the Unity client project
+    - [Assets](/unity3D/Assets) This is the game assets folder.
+       - [Scripts](/unity3D/Assets/Scripts) This is the game script folder.
+           - [ArrayData.cs](/unity3D/Assets/Scripts/ArrayData.cs) This is used to deserialize the detailed information of CC maps from JSON into CSharp Class.
            - [CCLevelGenerator.cs](root/subdirectory1/file2) This is the tile map generator responsible for generating tile information such as walls, grass, and other tiles.
       
